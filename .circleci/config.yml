@@ -33,11 +33,11 @@ jobs:
           cd docs
           yarn install
           yarn run docs:build
+          cd ../
           git config --global user.email "Robot" > /dev/null 2>&1
           git config --global user.name "robot@sphinxquant.com" > /dev/null 2>&1
-          cd .vuepress
-          git add dist -f && git commit -m "Initial dist subtree commit"
-          git subtree push --prefix dist origin gh-pages
+          git add .vuepress/dist -f && git commit -m "Initial .vuepress/dist subtree commit"
+          git subtree push --prefix .vuepress/dist origin gh-pages
 
       - save_cache:
           paths:

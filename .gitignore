@@ -105,3 +105,4 @@ venv.bak/
 
 # docs
 docs/node_modules
+docs/.vuepress/dist

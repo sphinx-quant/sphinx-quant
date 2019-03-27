@@ -29,13 +29,15 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cd docs
-      - run: yarn install
-      - run: yarn run docs:build
-      - run: git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
-      - run: git config --global user.name "$GH_NAME" > /dev/null 2>&1
-      - run: git add vuepress/dist -f && git commit -m "Initial vuepress/dist subtree commit"
-      - run: git push origin `git subtree split --prefix vuepress/dist master`:gh-pages --force
+      - run: |
+          cd docs
+          yarn install
+          yarn run docs:build
+          git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
+          git config --global user.name "$GH_NAME" > /dev/null 2>&1
+          cd .vuepress
+          git add dist -f && git commit -m "Initial dist subtree commit"
+          git push origin `git subtree split --prefix dist master`:gh-pages --force
 
       - save_cache:
           paths:

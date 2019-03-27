@@ -59,6 +59,22 @@ module.exports = {
           },
         ]
       },
+      {
+        title: '交易管理',
+        collapsable: false,
+        children: [
+          {
+            title: '模拟交易',
+            path: '/trade/trade/',
+            collapsable: false,
+          },
+          {
+            title: '实盘交易',
+            path: '/trade/realtrade/',
+            collapsable: false,
+          },
+        ]
+      },
     ]
   },
 };

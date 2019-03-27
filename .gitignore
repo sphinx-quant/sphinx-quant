@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 
 # docs
-docs/node_modules/
+docs/node_modules

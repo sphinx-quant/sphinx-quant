@@ -10,6 +10,6 @@
   "author": "sphinx-quant",
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^0.14.10"
+    "vuepress": "^1.0.0-alpha.44"
   }
 }

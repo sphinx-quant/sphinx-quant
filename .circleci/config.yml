@@ -35,6 +35,7 @@ jobs:
           yarn run docs:build
           cp -r .vuepress/dist ../
           cd ..
+          echo "www.sphinxquant.com" > dist/CNAME
           git config --global user.email "Robot" > /dev/null 2>&1
           git config --global user.name "robot@sphinxquant.com" > /dev/null 2>&1
           git add dist -f && git commit -m "Initial dist subtree commit"

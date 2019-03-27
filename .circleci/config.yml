@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/repo/docs
     build:
       branches:
         only:
@@ -29,14 +29,12 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cd docs
       - run: yarn install
       - run: yarn run docs:build
-      - run: cd ./vuepress
       - run: git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
       - run: git config --global user.name "$GH_NAME" > /dev/null 2>&1
-      - run: git add dist -f && git commit -m "Initial dist subtree commit"
-      - run: git push origin `git subtree split --prefix dist master`:gh-pages --force
+      - run: git add vuepress/dist -f && git commit -m "Initial vuepress/dist subtree commit"
+      - run: git push origin `git subtree split --prefix vuepress/dist master`:gh-pages --force
 
       - save_cache:
           paths:

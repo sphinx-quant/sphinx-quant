@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "Robot" > /dev/null 2>&1
           git config --global user.name "robot@sphinxquant.com" > /dev/null 2>&1
           git add dist -f && git commit -m "Initial dist subtree commit"
-          git subtree push --prefix dist origin gh-pages --force
+          git push origin `git subtree split --prefix dist master`:gh-pages --force
 
       - save_cache:
           paths:

@@ -33,8 +33,8 @@ jobs:
           cd docs
           yarn install
           yarn run docs:build
-          git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
-          git config --global user.name "$GH_NAME" > /dev/null 2>&1
+          git config --global user.email "Robot" > /dev/null 2>&1
+          git config --global user.name "robot@sphinxquant.com" > /dev/null 2>&1
           cd .vuepress
           git add dist -f && git commit -m "Initial dist subtree commit"
           git push origin `git subtree split --prefix dist master`:gh-pages --force

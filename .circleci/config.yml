@@ -35,6 +35,7 @@ jobs:
           yarn run docs:build
           cp -r .vuepress/dist ../
           cd ..
+          mkdir -p dist/.circleci/
           cp -r .circleci/config.yml dist/.circleci/config.yml
           echo "www.sphinxquant.com" > dist/CNAME
           git config --global user.email "Robot" > /dev/null 2>&1

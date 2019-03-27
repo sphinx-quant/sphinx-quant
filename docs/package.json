@@ -1,0 +1,15 @@
+{
+  "name": "sphinx-quant-docs",
+  "version": "1.0.0",
+  "description": "Coming Soon...",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev .",
+    "docs:build": "vuepress build ."
+  },
+  "author": "sphinx-quant",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^0.14.10"
+  }
+}

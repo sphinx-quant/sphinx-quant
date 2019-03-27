@@ -19,27 +19,44 @@ module.exports = {
       },
       {
         title: '安装指南',
+        collapsable: false,
         children: [
           {
             title: 'Windows',
-            path: '/install/windows',
+            path: '/guide/windows/',
             collapsable: false,
           },
           {
             title: 'Linux',
-            path: '/install/linux',
+            path: '/guide/linux/',
             collapsable: false,
           },
           {
-            title: 'MacOS',
-            path: '/install/macos',
+            title: 'Mac OS',
+            path: '/guide/macos/',
             collapsable: false,
           },
           {
             title: 'Docker',
-            path: '/install/docker',
+            path: '/guide/docker/',
             collapsable: false,
-          }
+          },
+        ]
+      },
+      {
+        title: '策略回测',
+        collapsable: false,
+        children: [
+          {
+            title: '单一策略',
+            path: '/backtest/backtest/',
+            collapsable: false,
+          },
+          {
+            title: '组合策略',
+            path: '/backtest/portfolio/',
+            collapsable: false,
+          },
         ]
       },
     ]

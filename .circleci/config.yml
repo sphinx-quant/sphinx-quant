@@ -38,5 +38,5 @@ jobs:
 
       - save_cache:
           paths:
-            - docs/node_modules
+            - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}

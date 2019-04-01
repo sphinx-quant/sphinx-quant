@@ -22,3 +22,7 @@
 ## 感谢支持
 
 <center><img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/qrcode.jpg" alt="drawing" width="300"/></center>
+
+## License
+
+Icon made by [geotatah](https://www.flaticon.com/authors/geotatah) from www.flaticon.com 

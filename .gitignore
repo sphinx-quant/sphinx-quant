@@ -109,3 +109,6 @@ docs/.vuepress/dist/
 
 # IDE
 .vscode
+
+# key
+secretkey.txt

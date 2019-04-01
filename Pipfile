@@ -11,6 +11,7 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 celery = "*"
+djangorestframework-jwt = "*"
 
 [requires]
 python_version = "3.6"

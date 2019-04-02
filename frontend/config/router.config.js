@@ -46,6 +46,10 @@ export default [
             name: 'portfolio',
             component: './ComingSoon',
           },
+          {
+            path: '/strategy/editor',
+            component: './Strategy/Editor',
+          },
         ],
       },
       {

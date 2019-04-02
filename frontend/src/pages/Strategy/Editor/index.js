@@ -5,6 +5,11 @@ import AceEditor from 'react-ace';
 
 import 'brace/mode/python';
 import 'brace/theme/monokai';
+import 'brace/ext/language_tools';
+import 'brace/ext/searchbox';
+import 'brace/keybinding/emacs';
+import 'brace/snippets/python';
+
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 const { RangePicker } = DatePicker;

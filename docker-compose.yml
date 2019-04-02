@@ -20,3 +20,9 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: sphinxquant
       RABBITMQ_DEFAULT_PASS: sphinxquant
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports: 
+      - "6379:6379"

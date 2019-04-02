@@ -42,4 +42,9 @@ export default {
   'menu.editor.flow': 'Flow Editor',
   'menu.editor.mind': 'Mind Editor',
   'menu.editor.koni': 'Koni Editor',
+  'menu.strategy': 'Strategy',
+  'menu.strategy.list': 'Strategy List',
+  'menu.strategy.backtest': 'Backtest',
+  'menu.strategy.portfolio': 'Portfolio',
+  'menu.trade': 'Trade',
 };

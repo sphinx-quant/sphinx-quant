@@ -42,4 +42,9 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.strategy': '策略管理',
+  'menu.strategy.list': '策略列表',
+  'menu.strategy.backtest': '回测',
+  'menu.strategy.portfolio': '组合回测',
+  'menu.trade': '交易管理',
 };

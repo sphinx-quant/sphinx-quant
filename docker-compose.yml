@@ -1,0 +1,28 @@
+version: '2.1'
+
+services:
+  mysql:
+    image: mysql:5
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: sphinxquant
+      MYSQL_ROOT_PASSWORD: sphinxquant
+
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    restart: always
+    ports:
+      - "5672:5672"
+      - "5671:5671"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: sphinxquant
+      RABBITMQ_DEFAULT_PASS: sphinxquant
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports: 
+      - "6379:6379"

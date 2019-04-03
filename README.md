@@ -17,7 +17,11 @@
 
 ## Screen Shot
 
-<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/s.png" alt="drawing" width="100%"/>
+<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s1.png" alt="drawing" width="100%"/>
+
+<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s2.png" alt="drawing" width="100%"/>
+
+<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s3.png" alt="drawing" width="100%"/>
 
 ## 感谢支持
 

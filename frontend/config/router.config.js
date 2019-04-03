@@ -37,7 +37,7 @@ export default [
         icon: 'area-chart',
         routes: [
           {
-            path: '/strategy/backtest',
+            path: '/strategy/list',
             name: 'list',
             component: './Strategy',
           },
@@ -47,8 +47,16 @@ export default [
             component: './ComingSoon',
           },
           {
-            path: '/strategy/editor',
+            path: '/strategy/list/editor/:strategyID?',
             component: './Strategy/Editor',
+          },
+          {
+            path: '/strategy/list/backtestlist/:strategyID',
+            component: './Strategy/BacktestList',
+          },
+          {
+            path: '/strategy/list/backtestdetail/:backtestID',
+            component: './Strategy/BacktestDetail',
           },
         ],
       },

@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Card, Button, Table } from 'antd';
+import router from 'umi/router';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 import styles from './index.less';
@@ -10,6 +11,7 @@ export default class StrategyList extends PureComponent {
 
     this.mockData = [
       {
+        id: 1,
         name: '双均线策略',
         desc: '',
         backtestTimes: 10,
@@ -18,6 +20,7 @@ export default class StrategyList extends PureComponent {
         createdAt: '2019-04-01 15:30',
       },
       {
+        id: 2,
         name: 'Dual Trust',
         desc: '经典的趋势跟踪系统',
         backtestTimes: 88,
@@ -54,9 +57,14 @@ export default class StrategyList extends PureComponent {
       },
       {
         title: '操作',
-        render: () => (
+        render: (_, record) => (
           <Fragment>
-            <a style={{ marginRight: 8 }}>编辑</a> <a style={{ marginRight: 8 }}>回测列表</a>{' '}
+            <a onClick={() => this.onEdit(record.id)} style={{ marginRight: 8 }}>
+              编辑
+            </a>{' '}
+            <a onClick={() => this.onBacktestList(record.id)} style={{ marginRight: 8 }}>
+              回测列表
+            </a>{' '}
             <a style={{ color: 'red' }}>删除</a>
           </Fragment>
         ),
@@ -64,13 +72,21 @@ export default class StrategyList extends PureComponent {
     ];
   }
 
+  onEdit = strategyID => {
+    router.push(`/strategy/list/editor/${strategyID}`);
+  };
+
+  onBacktestList = (strategyID = '') => {
+    router.push(`/strategy/list/backtestlist/${strategyID}`);
+  };
+
   render() {
     return (
       <PageHeaderWrapper title="策略列表">
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => {}}>
+              <Button icon="plus" type="primary" onClick={() => this.onEdit('')}>
                 新建
               </Button>
             </div>

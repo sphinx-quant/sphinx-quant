@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Card, Button, DatePicker, Input, Select } from 'antd';
+import _ from 'lodash';
 import moment from 'moment';
 import AceEditor from 'react-ace';
 
@@ -33,11 +34,14 @@ export default class Editor extends PureComponent {
 
   render() {
     const { code } = this.state;
+    const { strategyID } = _.get(this, 'props.match.params', '');
     const action = (
       <Fragment>
         <span>
           <Select defaultValue="minute" style={{ width: 120, marginRight: 10 }}>
             <Option value="minute">分钟</Option>
+            <Option value="tick">Tick</Option>
+            <Option value="day">每日</Option>
           </Select>
         </span>
         <span>
@@ -53,7 +57,7 @@ export default class Editor extends PureComponent {
       </Fragment>
     );
     return (
-      <PageHeaderWrapper action={action} title="Dual Trust">
+      <PageHeaderWrapper action={action} title={strategyID || 'new'}>
         <Card bordered={false} bodyStyle={{ padding: 0 }}>
           <AceEditor
             height="600px"

@@ -176,11 +176,13 @@ class Editor extends PureComponent {
     const editorTitle = (
       <Input onChange={this.changeStrategyName} value={currentStrategyDetail.name} />
     );
+
     return (
       <PageHeaderWrapper action={action} title={editorTitle}>
         <Card loading={loading} bodyStyle={{ padding: 0 }}>
           <AceEditor
-            maxLinex={Infinity}
+            maxLines={Infinity}
+            minLines={35}
             width="100%"
             placeholder="SphinxQuant"
             mode="python"
@@ -199,7 +201,15 @@ class Editor extends PureComponent {
               enableSnippets: true,
               showLineNumbers: true,
               tabSize: 4,
+              newLineMode: true,
             }}
+            commands={[
+              {
+                name: 'saveCode',
+                bindKey: { win: 'Ctrl-s', mac: 'Command-s' },
+                exec: this.onSave,
+              },
+            ]}
           />
         </Card>
       </PageHeaderWrapper>

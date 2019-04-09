@@ -14,11 +14,13 @@ module.exports = {
     page: true,
   },
   rules: {
+    camelcase: 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
     'react/jsx-wrap-multilines': 0,
     'react/prop-types': 0,
     'react/forbid-prop-types': 0,
     'react/jsx-one-expression-per-line': 0,
+    'import/prefer-default-export': 0,
     'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
     'import/no-extraneous-dependencies': [
       2,

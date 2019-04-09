@@ -4,7 +4,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 import styles from '../index.less';
 
-export default class StrategyList extends PureComponent {
+export default class BacktestList extends PureComponent {
   columns = [
     {
       title: '策略名称',

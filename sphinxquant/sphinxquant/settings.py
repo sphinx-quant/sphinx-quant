@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,7 @@ DATABASES = {
         'PASSWORD': 'sphinxquant',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        'OPTIONS': { 'charset':'utf8mb4' },
     }
 }
 

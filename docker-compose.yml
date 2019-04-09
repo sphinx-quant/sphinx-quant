@@ -9,6 +9,8 @@ services:
     environment:
       MYSQL_DATABASE: sphinxquant
       MYSQL_ROOT_PASSWORD: sphinxquant
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
 
   rabbitmq:
     image: rabbitmq:3-alpine

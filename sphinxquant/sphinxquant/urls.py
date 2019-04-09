@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^code', views.StrategyCodeView.as_view()),
+    url(r'^strategy/detail/(?P<id>\S+)',
+        views.StrategyUpdateAPIView.as_view()),
+    url(r'^strategy/list', views.StrategyListView.as_view()),
+    url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
+    url(r'^backtest', views.BacktestListView.as_view()),
 ]

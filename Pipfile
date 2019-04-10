@@ -14,6 +14,7 @@ django-filter = "*"
 celery = "*"
 djangorestframework-jwt = "*"
 mysqlclient = "*"
+librabbitmq = "*"
 
 [requires]
 python_version = "3.6"

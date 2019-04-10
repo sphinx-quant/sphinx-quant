@@ -4,7 +4,13 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, C
 from rest_framework.response import Response
 from .models import StrategyCode, Backtest, Strategy
 from .serializers import StrategyCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer
+from .tasks import add
 
+class CeleryTestView(APIView):
+    """Celery Test"""
+    def get(self, request, format=None):
+        add.delay(1,2)
+        return Response('')
 
 class StrategyCreateAPIView(CreateAPIView):
     """创建策略"""

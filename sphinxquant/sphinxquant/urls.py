@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^strategy/list', views.StrategyListView.as_view()),
     url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
     url(r'^backtest', views.BacktestListView.as_view()),
+    url(r'^test', views.CeleryTestView.as_view()),
 ]

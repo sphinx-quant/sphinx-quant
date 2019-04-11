@@ -9,8 +9,8 @@ from .tasks import add
 class CeleryTestView(APIView):
     """Celery Test"""
     def get(self, request, format=None):
-        add.delay(1,2)
-        return Response('')
+        result = add.delay(1, 2).get()
+        return Response({ 'result': result })
 
 class StrategyCreateAPIView(CreateAPIView):
     """创建策略"""

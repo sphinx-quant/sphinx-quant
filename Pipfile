@@ -15,6 +15,7 @@ celery = "*"
 djangorestframework-jwt = "*"
 mysqlclient = "*"
 librabbitmq = "*"
+ta-lib = "*"
 
 [requires]
 python_version = "3.6"

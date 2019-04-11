@@ -2,7 +2,9 @@ version: '3'
 
 services:
   frontend:
-    image: sphinxquant/frontend:latest
+    build:
+      context: .
+      dockerfile: ./fe.dockerfile
     restart: always
     volumes:
       - ./docker/nginx.conf:/etc/nginx/nginx.conf
@@ -10,7 +12,9 @@ services:
       - "8000:80"
 
   backend:
-    image: sphinxquant/backend:latest
+    build: 
+      context: .
+      dockerfile: be.dockerfile
     restart: always
     environment:
       MYSQL_HOST: mysql

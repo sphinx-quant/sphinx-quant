@@ -7,15 +7,29 @@ verify_ssl = true
 yapf = "*"
 
 [packages]
-django = "*"
 djangorestframework = "*"
-markdown = "*"
 django-filter = "*"
 celery = "*"
 djangorestframework-jwt = "*"
 mysqlclient = "*"
 librabbitmq = "*"
 ta-lib = "*"
+pyqt5 = "<5.12"
+dataclasses = "*"
+qdarkstyle = "*"
+requests = "*"
+websocket-client = "*"
+peewee = "*"
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+seaborn = "*"
+futu-api = "*"
+tigeropen = "*"
+ibapi = "*"
+Django = "*"
+Markdown = "*"
+vnpy = {editable = true,git = "https://github.com/vnpy/vnpy.git",ref = "2.0.1"}
 
 [requires]
 python_version = "3.6"

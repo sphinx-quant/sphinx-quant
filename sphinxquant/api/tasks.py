@@ -14,12 +14,12 @@ def add(x, y):
 
 
 @shared_task
-def backtest(code, class_name, vt_symbol, interval, start_date, end_date, rate,
+def backtest(code_text, class_name, vt_symbol, interval, start_date, end_date, rate,
              slippage, size, pricetick, capital):
     tmpf = tempfile.NamedTemporaryFile(suffix='.py', delete=True)
 
     try:
-        tmpf.write(code.encode('utf8'))
+        tmpf.write(code_text.encode('utf8'))
         tmpf.flush()
         tmpmodule_path, tmpmodule_file_name = os.path.split(tmpf.name)
         tmpmodule_name = tmpmodule_file_name[:-3]
@@ -44,7 +44,6 @@ def backtest(code, class_name, vt_symbol, interval, start_date, end_date, rate,
         engine.load_data()
         engine.run_backtesting()
         df = engine.calculate_result()
-        print(df)
         engine.calculate_statistics()
 
     finally:

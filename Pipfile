@@ -29,7 +29,9 @@ tigeropen = "*"
 ibapi = "*"
 Django = "*"
 Markdown = "*"
-vnpy = {editable = true,git = "https://github.com/vnpy/vnpy.git",ref = "2.0.1"}
+vnpy = {editable = true,git = "https://github.com/sphinxquant/vnpy.git",ref = "2.0.1"}
+supervisor = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.6"

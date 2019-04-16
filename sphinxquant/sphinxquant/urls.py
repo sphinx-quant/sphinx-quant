@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
     url(r'^backtest', views.BacktestListView.as_view()),
     url(r'^test', views.BacktestView.as_view()),
+    url(r'^currentUser', views.CurrentUserAPIView.as_view()),
 ]

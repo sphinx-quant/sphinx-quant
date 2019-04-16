@@ -4,6 +4,7 @@ import { Spin, Menu, Icon, Avatar } from 'antd';
 import HeaderDropdown from '../HeaderDropdown';
 import SelectLang from '../SelectLang';
 import styles from './index.less';
+import user from '../../assets/user.png';
 
 export default class GlobalHeaderRight extends PureComponent {
   changeReadState = clickedItem => {
@@ -31,16 +32,11 @@ export default class GlobalHeaderRight extends PureComponent {
     }
     return (
       <div className={className}>
-        {currentUser.name ? (
+        {currentUser.username ? (
           <HeaderDropdown overlay={menu}>
             <span className={`${styles.action} ${styles.account}`}>
-              <Avatar
-                size="small"
-                className={styles.avatar}
-                src={currentUser.avatar}
-                alt="avatar"
-              />
-              <span className={styles.name}>{currentUser.name}</span>
+              <Avatar size="small" className={styles.avatar} src={user} alt="avatar" />
+              <span className={styles.name}>{currentUser.username}</span>
             </span>
           </HeaderDropdown>
         ) : (

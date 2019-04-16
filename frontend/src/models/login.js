@@ -47,6 +47,7 @@ export default {
           payload: {
             status: false,
             currentAuthority: 'guest',
+            token: '',
           },
         });
       }
@@ -58,6 +59,7 @@ export default {
         payload: {
           status: false,
           currentAuthority: 'guest',
+          token: '',
         },
       });
       reloadAuthorized();

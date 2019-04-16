@@ -6,7 +6,7 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, C
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .models import StrategyCode, Backtest, Strategy
-from .serializers import StrategyCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer
+from .serializers import StrategyCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer, UserSerializer
 from .tasks import add, backtest
 
 
@@ -47,8 +47,8 @@ class CurrentUserAPIView(APIView):
     """当前登录用户"""
 
     def get(self, request, format=None):
-        token = request.META['Authorization']
-        return Response({'status': token })
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
 
 
 class StrategyCreateAPIView(CreateAPIView):

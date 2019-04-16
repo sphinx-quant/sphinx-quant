@@ -2,8 +2,9 @@
 FROM continuumio/anaconda3:2019.03
 WORKDIR /app
 RUN conda install python=3.6 
+RUN pip install pipenv
 COPY ./sphinxquant .
 COPY ./entrypoint.sh .
 RUN pipenv install
 
-ENTRYPOINT ["./entrypoint.sh"]
+# ENTRYPOINT ["./entrypoint.sh"]

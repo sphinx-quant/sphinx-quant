@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { stringify } from 'qs';
-import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
+import { accountLogin } from '@/services/api';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
@@ -14,13 +14,17 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
-      yield put({
-        type: 'changeLoginStatus',
-        payload: response,
-      });
+      const response = yield call(accountLogin, payload);
       // Login successfully
-      if (response.status === 'ok') {
+      if (response.token) {
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            status: false,
+            currentAuthority: 'admin',
+            token: response.token,
+          },
+        });
         reloadAuthorized();
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
@@ -37,11 +41,16 @@ export default {
           }
         }
         yield put(routerRedux.replace(redirect || '/'));
+      } else {
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            status: false,
+            currentAuthority: 'guest',
+            token: '',
+          },
+        });
       }
-    },
-
-    *getCaptcha({ payload }, { call }) {
-      yield call(getFakeCaptcha, payload);
     },
 
     *logout(_, { put }) {
@@ -50,6 +59,7 @@ export default {
         payload: {
           status: false,
           currentAuthority: 'guest',
+          token: '',
         },
       });
       reloadAuthorized();
@@ -69,6 +79,9 @@ export default {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
+      if (payload.token) {
+        localStorage.setItem('sphinxquant-token', payload.token);
+      }
       setAuthority(payload.currentAuthority);
       return {
         ...state,

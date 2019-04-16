@@ -1,7 +1,26 @@
+from django.contrib.auth.models import User
 from .models import StrategyCode, Backtest, Strategy
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
+
+
+class UserSerializer(ModelSerializer):
+    """用户Serializer"""
+
+    class Meta:
+        model = User
+        fields =  [
+            "id",
+            "last_login",
+            "is_superuser",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "is_staff",
+            "is_active",
+        ]
 
 class StrategyCodeSerializer(ModelSerializer):
     """策略代码Serializer"""

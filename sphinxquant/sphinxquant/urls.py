@@ -16,15 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
+from rest_framework_jwt.views import obtain_jwt_token
 from api import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api-token-auth', obtain_jwt_token),
     url(r'^code', views.StrategyCodeView.as_view()),
     url(r'^strategy/detail/(?P<id>\S+)',
         views.StrategyUpdateAPIView.as_view()),
     url(r'^strategy/list', views.StrategyListView.as_view()),
     url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
     url(r'^backtest', views.BacktestListView.as_view()),
-    url(r'^test', views.CeleryTestView.as_view()),
+    url(r'^test', views.BacktestView.as_view()),
+    url(r'^currentUser', views.CurrentUserAPIView.as_view()),
 ]

@@ -12,40 +12,13 @@ const { UserName, Password, Submit } = Login;
   submitting: loading.effects['login/login'],
 }))
 class LoginPage extends Component {
-  state = {
-    type: 'account',
-  };
-
-  onTabChange = type => {
-    this.setState({ type });
-  };
-
-  onGetCaptcha = () =>
-    new Promise((resolve, reject) => {
-      this.loginForm.validateFields(['mobile'], {}, (err, values) => {
-        if (err) {
-          reject(err);
-        } else {
-          const { dispatch } = this.props;
-          dispatch({
-            type: 'login/getCaptcha',
-            payload: values.mobile,
-          })
-            .then(resolve)
-            .catch(reject);
-        }
-      });
-    });
-
   handleSubmit = (err, values) => {
-    const { type } = this.state;
     if (!err) {
       const { dispatch } = this.props;
       dispatch({
         type: 'login/login',
         payload: {
           ...values,
-          type,
         },
       });
     }
@@ -57,12 +30,11 @@ class LoginPage extends Component {
 
   render() {
     const { submitting } = this.props;
-    const { type } = this.state;
+    // const { type } = this.state;
     return (
       <div className={styles.main}>
         <Login
-          defaultActiveKey={type}
-          onTabChange={this.onTabChange}
+          // defaultActiveKey={type}
           onSubmit={this.handleSubmit}
           ref={form => {
             this.loginForm = form;
@@ -70,7 +42,7 @@ class LoginPage extends Component {
         >
           <div style={{ marginTop: 30 }}>
             <UserName
-              name="userName"
+              name="username"
               placeholder={`${formatMessage({ id: 'app.login.userName' })}`}
               rules={[
                 {

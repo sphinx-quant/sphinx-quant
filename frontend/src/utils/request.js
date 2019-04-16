@@ -80,6 +80,9 @@ export default function request(url, option) {
 
   const defaultOptions = {
     credentials: 'include',
+    headers: {
+      Authorization: `JWT ${localStorage.getItem('sphinxquant-token')}`,
+    },
   };
   const newOptions = { ...defaultOptions, ...options };
   if (

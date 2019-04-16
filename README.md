@@ -17,15 +17,19 @@
 
 ## Screen Shot
 
-<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s1.png" alt="drawing" width="100%"/>
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s1.png?v=1.0.1" alt="drawing" width="100%"/>
 
-<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s2.png" alt="drawing" width="100%"/>
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s2.png?v=1.0.1" alt="drawing" width="100%"/>
 
-<img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/screenshot/s3.png" alt="drawing" width="100%"/>
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s3.png?v=1.0.1" alt="drawing" width="100%"/>
+
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s4.png?v=1.0.1" alt="drawing" width="100%"/>
+
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s5.png?v=1.0.1" alt="drawing" width="100%"/>
 
 ## 感谢支持
 
-<center><img src="https://sphinx-1253762454.cos.ap-shanghai.myqcloud.com/qrcode.jpg" alt="drawing" width="300"/></center>
+<center><img src="https://sphinx-1253762454.file.myqcloud.com/qrcode.jpg?v=1.0.1" alt="drawing" width="300"/></center>
 
 ## License
 

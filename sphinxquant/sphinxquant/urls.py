@@ -23,7 +23,7 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api-token-auth', obtain_jwt_token),
-    url(r'^code', views.StrategyCodeView.as_view()),
+    url(r'^code/(?P<id>\S+)', views.SourceCodeView.as_view()),
     url(r'^strategy/detail/(?P<id>\S+)',
         views.StrategyUpdateAPIView.as_view()),
     url(r'^strategy/list', views.StrategyListView.as_view()),

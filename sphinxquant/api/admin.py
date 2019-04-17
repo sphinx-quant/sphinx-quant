@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Strategy, Backtest, StrategyCode
+from .models import Strategy, Backtest, SourceCode
 
 
 class StrategyAdmin(admin.ModelAdmin):
@@ -12,10 +12,10 @@ class BacktestAdmin(admin.ModelAdmin):
     pass
 
 
-class StrategyCodeAdmin(admin.ModelAdmin):
+class SourceCodeAdmin(admin.ModelAdmin):
     pass
 
 
 admin.site.register(Strategy, StrategyAdmin)
 admin.site.register(Backtest, BacktestAdmin)
-admin.site.register(StrategyCode, StrategyCodeAdmin)
+admin.site.register(SourceCode, SourceCodeAdmin)

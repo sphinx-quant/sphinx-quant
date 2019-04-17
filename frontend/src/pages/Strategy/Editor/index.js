@@ -81,7 +81,7 @@ class Editor extends PureComponent {
       dispatch,
       strategy: { currentStrategyDetail },
     } = this.props;
-    _.set(currentStrategyDetail, 'strategy_code.code_text', code);
+    _.set(currentStrategyDetail, 'source_code.code_text', code);
     await dispatch({
       type: 'strategy/update',
       payload: {
@@ -194,7 +194,7 @@ class Editor extends PureComponent {
             showPrintMargin
             showGutter
             highlightActiveLine
-            value={_.get(currentStrategyDetail, 'strategy_code.code_text', '')}
+            value={_.get(currentStrategyDetail, 'source_code.code_text', '')}
             setOptions={{
               enableBasicAutocompletion: true,
               enableLiveAutocompletion: true,

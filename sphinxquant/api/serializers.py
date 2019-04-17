@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import StrategyCode, Backtest, Strategy
+from .models import SourceCode, Backtest, Strategy
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
@@ -22,17 +22,17 @@ class UserSerializer(ModelSerializer):
             "is_active",
         ]
 
-class StrategyCodeSerializer(ModelSerializer):
+class SourceCodeSerializer(ModelSerializer):
     """策略代码Serializer"""
 
     class Meta:
-        model = StrategyCode
+        model = SourceCode
         fields = '__all__'
 
 
 class BacktestSerializer(ModelSerializer):
     """回测Serializer"""
-    strategy_code = StrategyCodeSerializer()
+    source_code = SourceCodeSerializer()
 
     class Meta:
         model = Backtest
@@ -54,7 +54,7 @@ class StrategySerializer(ModelSerializer):
 class StrategyDetailSerializer(ModelSerializer):
     """策略详情Serializer Detail"""
 
-    strategy_code = StrategyCodeSerializer()
+    source_code = SourceCodeSerializer()
 
     def create(self, validated_data):
         """ 如果数据合法就创建并返回一个Strategy实例 """
@@ -63,8 +63,8 @@ class StrategyDetailSerializer(ModelSerializer):
             name=validated_data.get('name'),
             type=validated_data.get('type'),
             description=validated_data.get('description'),
-            strategy_code=StrategyCode.objects.create(
-                code_text=validated_data.get('strategy_code')['code_text']
+            source_code=SourceCode.objects.create(
+                code_text=validated_data.get('source_code')['code_text']
                 or ''),
         )
 
@@ -75,10 +75,10 @@ class StrategyDetailSerializer(ModelSerializer):
         instance.name = validated_data.get('name', instance.name)
         instance.type = validated_data.get('type', instance.type)
         instance.save()
-        strategy_code = instance.strategy_code
-        strategy_code.code_text = validated_data.pop(
-            'strategy_code')['code_text']
-        strategy_code.save()
+        source_code = instance.source_code
+        source_code.code_text = validated_data.pop(
+            'source_code')['code_text']
+        source_code.save()
         return instance
 
     class Meta:

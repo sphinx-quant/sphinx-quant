@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .models import StrategyCode, Backtest, Strategy
-from .serializers import StrategyCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer, UserSerializer
+from .models import SourceCode, Backtest, Strategy
+from .serializers import SourceCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer, UserSerializer
 from .tasks import add, backtest
 
 
@@ -24,7 +24,7 @@ class BacktestView(APIView):
     def get(self, request, format=None):
         strategy_id = self.request.query_params.get('id', None)
         strategy_obj = Strategy.objects.get(id=strategy_id)
-        code_text = strategy_obj.strategy_code.code_text
+        code_text = strategy_obj.source_code.code_text
 
         backtest.delay(
             code_text=code_text,
@@ -53,7 +53,7 @@ class CurrentUserAPIView(APIView):
 
 class StrategyCreateAPIView(CreateAPIView):
     """创建策略"""
-    queryset = StrategyCode.objects.all()
+    queryset = SourceCode.objects.all()
     serializer_class = StrategyDetailSerializer
 
 
@@ -64,15 +64,13 @@ class StrategyUpdateAPIView(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
 
 
-class StrategyCodeView(APIView):
+class SourceCodeView(APIView):
     """根据code查询代码"""
+    serializer_class = SourceCodeSerializer
 
-    def get(self, request, format=None):
-        code_id = self.request.query_params.get('id', None)
-        code = StrategyCode.objects.get(id=code_id)
-        serializer = StrategyCodeSerializer(code)
-        return Response(serializer.data)
-
+    def get_queryset(self):
+        id = self.request.id
+        return Strategy.objects.filter(source_code=id)
 
 # Create your views here.
 class StrategyListView(ListAPIView):

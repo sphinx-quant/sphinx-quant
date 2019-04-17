@@ -60,7 +60,7 @@ export async function createStrategyDetail(params) {
   return request(`/api/strategy/create`, {
     method: 'POST',
     body: {
-      strategy_code: { code_text: '' },
+      source_code: { code_text: '' },
       ...params,
     },
   });

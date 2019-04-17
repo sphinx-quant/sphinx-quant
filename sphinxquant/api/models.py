@@ -34,7 +34,7 @@ class BaseModel(models.Model):
         abstract = True
         ordering = ['-created_at']
 
-class StrategyCode(BaseModel):
+class SourceCode(BaseModel):
     """策略代码"""
     code_text = models.TextField(blank=True, null=True)
 
@@ -45,7 +45,7 @@ class StrategyCode(BaseModel):
 class Strategy(BaseModel):
     """策略"""
     # foreign
-    strategy_code = models.ForeignKey(StrategyCode, on_delete=models.CASCADE)
+    source_code = models.ForeignKey(SourceCode, on_delete=models.CASCADE)
     # self
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
@@ -71,7 +71,7 @@ class Backtest(BaseModel):
     # daily_result = models.TextField()
     # foreign
     strategy = models.ForeignKey(Strategy, on_delete=models.CASCADE)
-    strategy_code = models.ForeignKey(StrategyCode, on_delete=models.CASCADE)
+    source_code = models.ForeignKey(SourceCode, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

@@ -1,6 +1,11 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "https://mirrors.cloud.tencent.com/pypi/simple"
+verify_ssl = true
+
+[[source]]
+url = "https://rquser:ricequant99@py.ricequant.com/simple"
+name = "rqdata"
 verify_ssl = true
 
 [dev-packages]
@@ -26,12 +31,13 @@ matplotlib = "*"
 seaborn = "*"
 futu-api = "*"
 tigeropen = "*"
-ibapi = "*"
+ibapi = {file = "https://sphinx-1253762454.file.myqcloud.com/mirror/ibapi-9.75.1-py3-none-any.whl"}
 Django = "*"
 Markdown = "*"
-vnpy = {editable = true,git = "https://github.com/vnpy/vnpy.git",ref = "v2.0.2"}
+vnpy = {file = "https://github.com/vnpy/vnpy/archive/v2.0.2.zip"}
 supervisor = "*"
 uwsgi = "*"
+rqdatac = {version = "*",index = "rqdata"}
 
 [requires]
 python_version = "3.6"

@@ -1,36 +1,36 @@
 version: '3'
 
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: ./fe.dockerfile
-    restart: always
-    volumes:
-      - ./docker/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "8000:80"
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./fe.dockerfile
+  #   restart: always
+  #   volumes:
+  #     - ./docker/nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - "8000:80"
 
-  backend:
-    build: 
-      context: .
-      dockerfile: be.dockerfile
-    restart: always
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_DATABASE: sphinxquant
-      MYSQL_ROOT_PASSWORD: sphinxquant
-      RABBITMQ_HOST: rabbitmq
-      RABBITMQ_USER: sphinxquant
-      RABBITMQ_PASS: sphinxquant
-      REDIS_HOST: redis
-      REDIS_PASS: sphinxquant
+  # backend:
+  #   build: 
+  #     context: .
+  #     dockerfile: be.dockerfile
+  #   restart: always
+  #   environment:
+  #     MYSQL_HOST: mysql
+  #     MYSQL_DATABASE: sphinxquant
+  #     MYSQL_ROOT_PASSWORD: sphinxquant
+  #     RABBITMQ_HOST: rabbitmq
+  #     RABBITMQ_USER: sphinxquant
+  #     RABBITMQ_PASS: sphinxquant
+  #     REDIS_HOST: redis
+  #     REDIS_PASS: sphinxquant
 
   mysql:
     image: mysql:5
     restart: always
-    # ports:
-    #   - "3306:3306"
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: sphinxquant
       MYSQL_ROOT_PASSWORD: sphinxquant
@@ -40,10 +40,10 @@ services:
   rabbitmq:
     image: rabbitmq:3-alpine
     restart: always
-    # ports:
-    #   - "5672:5672"
-    #   - "5671:5671"
-    #   - "15672:15672"
+    ports:
+      - "5672:5672"
+      - "5671:5671"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: sphinxquant
       RABBITMQ_DEFAULT_PASS: sphinxquant

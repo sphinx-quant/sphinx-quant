@@ -10,6 +10,7 @@ verify_ssl = true
 
 [dev-packages]
 yapf = "*"
+pre-commit = "*"
 
 [packages]
 djangorestframework = "*"

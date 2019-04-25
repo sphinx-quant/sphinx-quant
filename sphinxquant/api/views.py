@@ -2,7 +2,7 @@ import jwt
 from django.shortcuts import render
 from datetime import datetime
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView, GenericAPIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .models import SourceCode, Backtest, Strategy
@@ -19,28 +19,28 @@ class CeleryTestView(APIView):
 
 
 class BacktestView(APIView):
-    """Celery Test"""
+    """异步回测"""
+    def get(self, request, id, format=None):
+        strategy_id = id
+        if strategy_id:
+            strategy_obj = Strategy.objects.get(id=strategy_id)
+            code_text = strategy_obj.source_code.code_text
 
-    def get(self, request, format=None):
-        strategy_id = self.request.query_params.get('id', None)
-        strategy_obj = Strategy.objects.get(id=strategy_id)
-        code_text = strategy_obj.source_code.code_text
-
-        backtest.delay(
-            code_text=code_text,
-            class_name='AtrRsiStrategy',
-            vt_symbol='IF88.CFFEX',
-            interval='1m',
-            start_date=datetime(2018, 1, 1),
-            end_date=datetime(2019, 1, 1),
-            rate=3.0 / 10000,
-            slippage=0.2,
-            size=300,
-            pricetick=0.2,
-            capital=1_000_000,
-        )
-
-        return Response({'status': 'Process'})
+            backtest.delay(
+                code_text=code_text,
+                class_name='DoubleMaStrategy',
+                vt_symbol='IF88.CFFEX',
+                interval='1m',
+                start_date=datetime(2018, 1, 1),
+                end_date=datetime(2019, 1, 1),
+                rate=3.0 / 10000,
+                slippage=0.2,
+                size=300,
+                pricetick=0.2,
+                capital=1_000_000,
+            )
+            return Response({'status': 'Process'})
+        return Response({'status': 'Error'})
 
 
 class CurrentUserAPIView(APIView):

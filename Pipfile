@@ -39,6 +39,7 @@ vnpy = {file = "https://github.com/vnpy/vnpy/archive/v2.0.2.zip"}
 supervisor = "*"
 uwsgi = "*"
 rqdatac = {version = "*",index = "rqdata"}
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.6"

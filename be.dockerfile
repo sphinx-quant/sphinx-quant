@@ -1,10 +1,11 @@
-# 构建前端页面
-FROM continuumio/anaconda3:2019.03
+# 构建后端工程
+FROM continuumio/anaconda3:5.2.0
 WORKDIR /app
-RUN conda install python=3.6 
+RUN apt-get install python3.6-dev libmysqlclient-dev python-psycopg2 libpq-dev python3-tk python3-tk-dbg -y
 RUN pip install pipenv
+RUN pipenv install psycopg2-binary
 COPY ./sphinxquant .
 COPY ./entrypoint.sh .
 RUN pipenv install
 
-# ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

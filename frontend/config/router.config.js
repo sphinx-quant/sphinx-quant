@@ -61,6 +61,16 @@ export default [
         component: './ComingSoon',
       },
       {
+        path: '/workers/list',
+        name: 'workers',
+        icon: 'cluster',
+        component: './Workers',
+      },
+      {
+        path: '/workers/list/terminal',
+        component: './Workers/Terminal',
+      },
+      {
         component: '404',
       },
     ],

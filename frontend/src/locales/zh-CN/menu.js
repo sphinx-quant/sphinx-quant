@@ -47,4 +47,5 @@ export default {
   'menu.strategy.backtest': '回测',
   'menu.strategy.portfolio': '组合回测',
   'menu.trade': '交易管理',
+  'menu.workers': '节点管理',
 };

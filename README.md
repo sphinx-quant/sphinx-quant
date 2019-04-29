@@ -27,6 +27,10 @@
 
 <img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s5.png?v=1.0.1" alt="drawing" width="100%"/>
 
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s6.png?v=1.0.1" alt="drawing" width="100%"/>
+
+<img src="https://sphinx-1253762454.file.myqcloud.com/screenshot/s7.png?v=1.0.1" alt="drawing" width="100%"/>
+
 ## 感谢支持
 
 <center><img src="https://sphinx-1253762454.file.myqcloud.com/qrcode.jpg?v=1.0.1" alt="drawing" width="300"/></center>

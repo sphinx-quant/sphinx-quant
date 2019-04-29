@@ -47,4 +47,5 @@ export default {
   'menu.strategy.backtest': 'Backtest',
   'menu.strategy.portfolio': 'Portfolio',
   'menu.trade': 'Trade',
+  'menu.workers': 'Workers',
 };

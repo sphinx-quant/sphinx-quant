@@ -35,7 +35,7 @@ tigeropen = "*"
 ibapi = {file = "https://sphinx-1253762454.file.myqcloud.com/mirror/ibapi-9.75.1-py3-none-any.whl"}
 Django = "*"
 Markdown = "*"
-vnpy = {file = "https://github.com/vnpy/vnpy/archive/v2.0.2.zip"}
+vnpy = {file = "https://github.com/sphinx-quant/vnpy/archive/master.zip"}
 supervisor = "*"
 uwsgi = "*"
 rqdatac = {version = "*",index = "rqdata"}

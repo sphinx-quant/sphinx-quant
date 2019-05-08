@@ -20,6 +20,7 @@ class CeleryTestView(APIView):
 
 class BacktestView(APIView):
     """异步回测"""
+
     def get(self, request, id, format=None):
         strategy_id = id
         if strategy_id:
@@ -27,11 +28,12 @@ class BacktestView(APIView):
             code_text = strategy_obj.source_code.code_text
 
             backtest.delay(
+                strategy_id=strategy_id,
                 code_text=code_text,
                 class_name='DoubleMaStrategy',
                 vt_symbol='IF88.CFFEX',
                 interval='1m',
-                start_date=datetime(2018, 1, 1),
+                start_date=datetime(2016, 1, 1),
                 end_date=datetime(2019, 1, 1),
                 rate=3.0 / 10000,
                 slippage=0.2,
@@ -71,6 +73,7 @@ class SourceCodeView(APIView):
     def get_queryset(self):
         id = self.request.id
         return Strategy.objects.filter(source_code=id)
+
 
 # Create your views here.
 class StrategyListView(ListAPIView):

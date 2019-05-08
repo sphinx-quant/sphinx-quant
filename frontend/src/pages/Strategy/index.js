@@ -115,7 +115,7 @@ class StrategyList extends PureComponent {
    * @memberof StrategyList
    */
   gotoBacktestList = (strategyID = '') => {
-    router.push(`/strategy/list/backtestlist/${strategyID}`);
+    router.push(`/strategy/list/backtest/list/${strategyID}`);
   };
 
   /**

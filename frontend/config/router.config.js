@@ -45,11 +45,11 @@ export default [
             component: './Strategy/Editor',
           },
           {
-            path: '/strategy/list/backtestlist/:strategyID',
+            path: '/strategy/list/backtest/list/:strategyID',
             component: './Strategy/BacktestList',
           },
           {
-            path: '/strategy/list/backtestdetail/:backtestID',
+            path: '/strategy/list/backtest/detail/:backtestID',
             component: './Strategy/BacktestDetail',
           },
         ],

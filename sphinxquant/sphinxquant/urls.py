@@ -28,7 +28,7 @@ urlpatterns = [
         views.StrategyUpdateAPIView.as_view()),
     url(r'^strategy/list', views.StrategyListView.as_view()),
     url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
-    url(r'^backtest', views.BacktestListView.as_view()),
+    url(r'^backtest/list', views.BacktestListView.as_view()),
     url(r'^test/(?P<id>\S+)', views.BacktestView.as_view()),
     url(r'^currentUser', views.CurrentUserAPIView.as_view()),
 ]

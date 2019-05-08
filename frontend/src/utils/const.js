@@ -15,3 +15,11 @@ export const MODAL_FORM_LAYOUT = {
     sm: { span: 16 },
   },
 };
+
+export const BACKTEST_STATUS_TYPE = {
+  S: 'Start',
+  P: 'Process',
+  D: 'Done',
+  E: 'Error',
+  A: 'Abort',
+};

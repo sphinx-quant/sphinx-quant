@@ -34,6 +34,7 @@ class BaseModel(models.Model):
         abstract = True
         ordering = ['-created_at']
 
+
 class SourceCode(BaseModel):
     """策略代码"""
     code_text = models.TextField(blank=True, null=True)
@@ -64,9 +65,16 @@ class Backtest(BaseModel):
     end_date = models.DateField()
     status = models.CharField(max_length=1, choices=BACKTEST_STATUS_TYPE)
     bar_type = models.CharField(max_length=1, choices=BAR_TYPE)
-    total_profit_percent = models.FloatField(max_length=15)
-    year_profit_percent = models.FloatField(max_length=15)
-    max_dropdown_percent = models.FloatField(max_length=15)
+    logs = models.TextField(blank=True, null=True)
+    total_profit_percent = models.FloatField(max_length=15,
+                                             blank=True,
+                                             null=True)
+    year_profit_percent = models.FloatField(max_length=15,
+                                            blank=True,
+                                            null=True)
+    max_dropdown_percent = models.FloatField(max_length=15,
+                                             blank=True,
+                                             null=True)
     # daily_capital = models.TextField()
     # daily_result = models.TextField()
     # foreign

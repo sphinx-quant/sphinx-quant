@@ -9,61 +9,132 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='SourceCode',
+            name="SourceCode",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('code_text', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("code_text", models.TextField(blank=True, null=True)),
             ],
-            options={
-                'ordering': ['-created_at'],
-                'abstract': False,
-            },
+            options={"ordering": ["-created_at"], "abstract": False},
         ),
         migrations.CreateModel(
-            name='Strategy',
+            name="Strategy",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('type', models.CharField(choices=[('STOCK', 'STOCK'), ('FUTURES', 'FUTURES'), ('CRYPTO_CURRENCY', 'CRYPTO_CURRENCY'), ('OTHER', 'OTHER')], max_length=127)),
-                ('source_code', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.SourceCode')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField(blank=True, null=True)),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[
+                            ("STOCK", "STOCK"),
+                            ("FUTURES", "FUTURES"),
+                            ("CRYPTO_CURRENCY", "CRYPTO_CURRENCY"),
+                            ("OTHER", "OTHER"),
+                        ],
+                        max_length=127,
+                    ),
+                ),
+                (
+                    "source_code",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.SourceCode"
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['-created_at'],
-                'abstract': False,
-            },
+            options={"ordering": ["-created_at"], "abstract": False},
         ),
         migrations.CreateModel(
-            name='Backtest',
+            name="Backtest",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
-                ('status', models.CharField(choices=[('START', 'START'), ('PROCESS', 'PROCESS'), ('DONE', 'DONE'), ('ERROR', 'ERROR'), ('ABORT', 'ABORT')], max_length=127)),
-                ('bar_type', models.CharField(choices=[('TICK', 'TICK'), ('MINUTE', 'MINUTE'), ('DAY', 'DAY')], max_length=127)),
-                ('logs', models.TextField(blank=True, null=True)),
-                ('total_profit_percent', models.FloatField(blank=True, max_length=15, null=True)),
-                ('year_profit_percent', models.FloatField(blank=True, max_length=15, null=True)),
-                ('max_dropdown_percent', models.FloatField(blank=True, max_length=15, null=True)),
-                ('source_code', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.SourceCode')),
-                ('strategy', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.Strategy')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField(blank=True, null=True)),
+                ("start_date", models.DateField()),
+                ("end_date", models.DateField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("START", "START"),
+                            ("PROCESS", "PROCESS"),
+                            ("DONE", "DONE"),
+                            ("ERROR", "ERROR"),
+                            ("ABORT", "ABORT"),
+                        ],
+                        max_length=127,
+                    ),
+                ),
+                (
+                    "bar_type",
+                    models.CharField(
+                        choices=[
+                            ("TICK", "TICK"),
+                            ("MINUTE", "MINUTE"),
+                            ("DAY", "DAY"),
+                        ],
+                        max_length=127,
+                    ),
+                ),
+                ("logs", models.TextField(blank=True, null=True)),
+                (
+                    "total_profit_percent",
+                    models.FloatField(blank=True, max_length=15, null=True),
+                ),
+                (
+                    "year_profit_percent",
+                    models.FloatField(blank=True, max_length=15, null=True),
+                ),
+                (
+                    "max_dropdown_percent",
+                    models.FloatField(blank=True, max_length=15, null=True),
+                ),
+                (
+                    "source_code",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.SourceCode"
+                    ),
+                ),
+                (
+                    "strategy",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.Strategy"
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['-created_at'],
-                'abstract': False,
-            },
+            options={"ordering": ["-created_at"], "abstract": False},
         ),
     ]

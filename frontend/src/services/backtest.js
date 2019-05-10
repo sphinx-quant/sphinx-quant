@@ -9,3 +9,13 @@ import request from '@/utils/request';
 export async function getBacktestList() {
   return request('/api/backtest/list');
 }
+
+/**
+ * 开始回测
+ *
+ * @export
+ * @returns
+ */
+export async function startBacktest({ strategyID }) {
+  return request(`/api/backtest/test/${strategyID}`);
+}

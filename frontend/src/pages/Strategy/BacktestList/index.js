@@ -87,7 +87,7 @@ class BacktestList extends PureComponent {
       <PageHeaderWrapper title="回测列表">
         <Card bordered={false}>
           <div className={styles.tableList}>
-            <Table dataSource={backtestList} columns={this.columns} />
+            <Table rowKey="id" dataSource={backtestList} columns={this.columns} />
           </div>
         </Card>
       </PageHeaderWrapper>

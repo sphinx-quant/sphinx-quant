@@ -56,13 +56,14 @@ def backtest(
         name=strategy.name,
         start_date=datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S"),
         end_date=datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S"),
-        status=BacktestStatusType.PROCESS,
+        status=BacktestStatusType.PROCESS.value,
         total_profit_percent=0.0,
         year_profit_percent=0.0,
         max_dropdown_percent=0.0,
         source_code=SourceCode.objects.create(code_text=code_text or ""),
         strategy=strategy,
     )
+    bt_obj.save()
     with capture() as out:
         try:
             tmpf.write(code_text.encode("utf8"))
@@ -92,11 +93,11 @@ def backtest(
             df = engine.calculate_result()
             engine.calculate_statistics()
             # 完成回测
-            bt_obj.status = BacktestStatusType.DONE
+            bt_obj.status = BacktestStatusType.DONE.value
         except Exception as e:
             print(e)
             # 中途发生错误
-            bt_obj.status = BacktestStatusType.ERROR
+            bt_obj.status = BacktestStatusType.ERROR.value
         finally:
             tmpf.close()
     bt_obj.logs = out[0]

@@ -1,8 +1,8 @@
 export const STRATEGY_TYPE = {
-  S: 'Stock',
-  F: 'Futures',
-  C: 'CryptoCurrency',
-  O: 'Other',
+  STOCK: 'STOCK',
+  FUTURES: 'FUTURES',
+  CRYPTO_CURRENCY: 'CRYPTO_CURRENCY',
+  OTHER: 'OTHER',
 };
 
 export const MODAL_FORM_LAYOUT = {
@@ -17,9 +17,9 @@ export const MODAL_FORM_LAYOUT = {
 };
 
 export const BACKTEST_STATUS_TYPE = {
-  S: 'Start',
-  P: 'Process',
-  D: 'Done',
-  E: 'Error',
-  A: 'Abort',
+  START: 'START',
+  PROCESS: 'PROCESS',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+  ABORT: 'ABORT',
 };

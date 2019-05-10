@@ -2,11 +2,22 @@ import jwt
 from django.shortcuts import render
 from datetime import datetime
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView, GenericAPIView
+from rest_framework.generics import (
+    ListAPIView,
+    RetrieveUpdateDestroyAPIView,
+    CreateAPIView,
+    GenericAPIView,
+)
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .models import SourceCode, Backtest, Strategy
-from .serializers import SourceCodeSerializer, BacktestSerializer, StrategySerializer, StrategyDetailSerializer, UserSerializer
+from .serializers import (
+    SourceCodeSerializer,
+    BacktestSerializer,
+    StrategySerializer,
+    StrategyDetailSerializer,
+    UserSerializer,
+)
 from .tasks import add, backtest
 
 
@@ -15,7 +26,7 @@ class CeleryTestView(APIView):
 
     def get(self, request, format=None):
         result = add.delay(1, 2).get()
-        return Response({'result': result})
+        return Response({"result": result})
 
 
 class BacktestView(APIView):
@@ -30,9 +41,9 @@ class BacktestView(APIView):
             backtest.delay(
                 strategy_id=strategy_id,
                 code_text=code_text,
-                class_name='DoubleMaStrategy',
-                vt_symbol='IF88.CFFEX',
-                interval='1m',
+                class_name="DoubleMaStrategy",
+                vt_symbol="IF88.CFFEX",
+                interval="1m",
                 start_date=datetime(2016, 1, 1),
                 end_date=datetime(2019, 1, 1),
                 rate=3.0 / 10000,
@@ -41,8 +52,8 @@ class BacktestView(APIView):
                 pricetick=0.2,
                 capital=1_000_000,
             )
-            return Response({'status': 'Process'})
-        return Response({'status': 'Error'})
+            return Response({"status": "Process"})
+        return Response({"status": "Error"})
 
 
 class CurrentUserAPIView(APIView):
@@ -55,19 +66,22 @@ class CurrentUserAPIView(APIView):
 
 class StrategyCreateAPIView(CreateAPIView):
     """创建策略"""
+
     queryset = SourceCode.objects.all()
     serializer_class = StrategyDetailSerializer
 
 
 class StrategyUpdateAPIView(RetrieveUpdateDestroyAPIView):
     """查询，修改，删除Strategy详情"""
+
     queryset = Strategy.objects.all()
     serializer_class = StrategyDetailSerializer
-    lookup_field = 'id'
+    lookup_field = "id"
 
 
 class SourceCodeView(APIView):
     """根据code查询代码"""
+
     serializer_class = SourceCodeSerializer
 
     def get_queryset(self):
@@ -78,11 +92,13 @@ class SourceCodeView(APIView):
 # Create your views here.
 class StrategyListView(ListAPIView):
     """ 策略列表 """
+
     queryset = Strategy.objects.all()
     serializer_class = StrategySerializer
 
 
 class BacktestListView(ListAPIView):
     """ 回测列表 """
+
     queryset = Backtest.objects.all()
     serializer_class = BacktestSerializer

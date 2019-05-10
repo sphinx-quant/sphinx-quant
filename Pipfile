@@ -9,8 +9,9 @@ name = "rqdata"
 verify_ssl = true
 
 [dev-packages]
-yapf = "*"
 pre-commit = "*"
+black = "*"
+v = {editable = true,version = "*"}
 
 [packages]
 djangorestframework = "*"

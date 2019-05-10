@@ -21,14 +21,13 @@ from api import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^api-token-auth', obtain_jwt_token),
-    url(r'^code/(?P<id>\S+)', views.SourceCodeView.as_view()),
-    url(r'^strategy/detail/(?P<id>\S+)',
-        views.StrategyUpdateAPIView.as_view()),
-    url(r'^strategy/list', views.StrategyListView.as_view()),
-    url(r'^strategy/create', views.StrategyCreateAPIView.as_view()),
-    url(r'^backtest/list', views.BacktestListView.as_view()),
-    url(r'^test/(?P<id>\S+)', views.BacktestView.as_view()),
-    url(r'^currentUser', views.CurrentUserAPIView.as_view()),
+    path("admin/", admin.site.urls),
+    url(r"^api-token-auth", obtain_jwt_token),
+    url(r"^code/(?P<id>\S+)", views.SourceCodeView.as_view()),
+    url(r"^strategy/detail/(?P<id>\S+)", views.StrategyUpdateAPIView.as_view()),
+    url(r"^strategy/list", views.StrategyListView.as_view()),
+    url(r"^strategy/create", views.StrategyCreateAPIView.as_view()),
+    url(r"^backtest/list", views.BacktestListView.as_view()),
+    url(r"^test/(?P<id>\S+)", views.BacktestView.as_view()),
+    url(r"^currentUser", views.CurrentUserAPIView.as_view()),
 ]

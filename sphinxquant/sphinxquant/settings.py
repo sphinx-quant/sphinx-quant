@@ -37,9 +37,7 @@ except Exception:
         .replace('"', "")
         .replace("\\", "")
     )
-    SECRET_KEY = "".join(
-        [random.SystemRandom().choice(chars) for i in range(128)]
-    )
+    SECRET_KEY = "".join([random.SystemRandom().choice(chars) for i in range(128)])
     f = open(os.path.join(BASE_DIR, "secretkey.txt"), "w+")
     f.write(SECRET_KEY)
     f.close()
@@ -120,9 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 

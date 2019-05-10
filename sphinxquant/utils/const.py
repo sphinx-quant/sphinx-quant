@@ -3,7 +3,7 @@ from enum import Enum
 
 def enum_to_choices(enum: Enum):
     """ cover enum to choice """
-    return [(tag.name, tag.value) for tag in enum]
+    return tuple([(tag.name, tag.value) for tag in enum])
 
 
 class BacktestStatusType(Enum):

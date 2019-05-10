@@ -1,4 +1,4 @@
-import { getBacktestList } from '@/services/backtest';
+import { getBacktestList, startBacktest } from '@/services/backtest';
 
 export default {
   namespace: 'backtest',
@@ -23,6 +23,16 @@ export default {
           backtestList: response,
         },
       });
+    },
+
+    /**
+     * 开始回测
+     *
+     * @param {*} { payload }
+     * @param {*} { call, put }
+     */
+    *startBacktest({ payload }, { call }) {
+      yield call(startBacktest, payload);
     },
   },
 

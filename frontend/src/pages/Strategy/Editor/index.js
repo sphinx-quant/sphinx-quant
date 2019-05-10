@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import router from 'umi/router';
 import { connect } from 'dva';
 import { Card, Button, DatePicker, Input, Select } from 'antd';
 import _ from 'lodash';
@@ -27,6 +28,7 @@ const dateFormat = 'YYYY/MM/DD';
   strategy,
   loading: loading.effects['strategy/getStrategyDetail'],
   saveLoading: loading.effects['strategy/updateStrategyDetail'],
+  startBacktestLoading: loading.effects['backtest/startBacktest'],
 }))
 class Editor extends PureComponent {
   /**
@@ -114,6 +116,24 @@ class Editor extends PureComponent {
   };
 
   /**
+   * 回测按钮点击
+   *
+   * @memberof Editor
+   */
+  onBacktest = async () => {
+    const { dispatch, match } = this.props;
+    const strategyID = _.get(match, 'params.strategyID', '');
+
+    await dispatch({
+      type: 'backtest/startBacktest',
+      payload: {
+        strategyID,
+      },
+    });
+    router.push(`/strategy/list/backtest/list/${strategyID}`);
+  };
+
+  /**
    * 保存按钮点击
    *
    * @memberof Editor
@@ -146,7 +166,7 @@ class Editor extends PureComponent {
   }
 
   render() {
-    const { strategy, loading, saveLoading } = this.props;
+    const { strategy, loading, saveLoading, startBacktestLoading } = this.props;
     const { currentStrategyDetail } = strategy;
     const action = (
       <Fragment>
@@ -165,7 +185,12 @@ class Editor extends PureComponent {
           defaultValue={[moment('2015/01/01', dateFormat), moment('2019/01/01', dateFormat)]}
           format={dateFormat}
         />
-        <Button style={{ width: 100 }} type="default">
+        <Button
+          style={{ width: 100 }}
+          onClick={this.onBacktest}
+          loading={startBacktestLoading}
+          type="default"
+        >
           回测
         </Button>
         <Button style={{ width: 100 }} onClick={this.onSave} loading={saveLoading} type="primary">

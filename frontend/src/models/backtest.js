@@ -1,4 +1,9 @@
-import { getBacktestList, startBacktest } from '@/services/backtest';
+import {
+  getBacktestList,
+  startBacktest,
+  deleteBacktestDetail,
+  getBacktestDetail,
+} from '@/services/backtest';
 
 export default {
   namespace: 'backtest',
@@ -6,6 +11,8 @@ export default {
   state: {
     // 回测列表
     backtestList: [],
+    // 回测详情
+    currentBacktestDetail: {},
   },
 
   effects: {
@@ -26,6 +33,22 @@ export default {
     },
 
     /**
+     * 获得回测详情
+     *
+     * @param {*} { payload }
+     * @param {*} { call, put }
+     */
+    *getBacktestDetail({ payload }, { call, put }) {
+      const response = yield call(getBacktestDetail, payload);
+      yield put({
+        type: 'update',
+        payload: {
+          currentBacktestDetail: response,
+        },
+      });
+    },
+
+    /**
      * 开始回测
      *
      * @param {*} { payload }
@@ -33,6 +56,16 @@ export default {
      */
     *startBacktest({ payload }, { call }) {
       yield call(startBacktest, payload);
+    },
+
+    /**
+     * 删除回测
+     *
+     * @param {*} { payload }
+     * @param {*} { call }
+     */
+    *deleteBacktestDetail({ payload }, { call }) {
+      yield call(deleteBacktestDetail, payload);
     },
   },
 

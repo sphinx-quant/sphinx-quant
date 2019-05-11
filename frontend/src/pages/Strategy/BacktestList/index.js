@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import moment from 'moment';
-import { Card, Table } from 'antd';
+import { Card, Table, Popconfirm } from 'antd';
 import { connect } from 'dva';
 import router from 'umi/router';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
@@ -49,7 +49,14 @@ class BacktestList extends PureComponent {
           <a onClick={() => this.gotoBacktestDetail(backtestID)} style={{ marginRight: 8 }}>
             查看详情
           </a>{' '}
-          <a style={{ color: 'red' }}>删除</a>
+          <Popconfirm
+            onConfirm={() => this.deleteBacktest(backtestID)}
+            title="是否确认删除？"
+            okText="Yes"
+            cancelText="No"
+          >
+            <a style={{ color: 'red' }}>删除</a>
+          </Popconfirm>
         </Fragment>
       ),
     },
@@ -80,12 +87,26 @@ class BacktestList extends PureComponent {
     router.push(`/strategy/list/backtest/detail/${backtestID}`);
   };
 
+  /**
+   * 删除回测
+   *
+   * @memberof BacktestList
+   */
+  deleteBacktest = async (backtestID = '') => {
+    const { dispatch } = this.props;
+    await dispatch({
+      type: 'backtest/deleteBacktestDetail',
+      payload: backtestID,
+    });
+    this.getBacktestList();
+  };
+
   render() {
-    const { backtest } = this.props;
+    const { backtest, loading } = this.props;
     const { backtestList } = backtest;
     return (
       <PageHeaderWrapper title="回测列表">
-        <Card bordered={false}>
+        <Card loading={loading} bordered={false}>
           <div className={styles.tableList}>
             <Table rowKey="id" dataSource={backtestList} columns={this.columns} />
           </div>

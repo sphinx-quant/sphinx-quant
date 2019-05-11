@@ -74,16 +74,18 @@ class Editor extends PureComponent {
   };
 
   /**
-   * 策略代码发生变化
+   * 修改当前策略的数据，并且更新
    *
+   * @param {String} path 对象路径
+   * @param {*} value 修改的值
    * @memberof Editor
    */
-  onCodeChange = async code => {
+  changeCurrentDetailAndUpdate = async (path, value) => {
     const {
       dispatch,
       strategy: { currentStrategyDetail },
     } = this.props;
-    _.set(currentStrategyDetail, 'source_code.code_text', code);
+    _.set(currentStrategyDetail, path, value);
     await dispatch({
       type: 'strategy/update',
       payload: {
@@ -94,25 +96,22 @@ class Editor extends PureComponent {
   };
 
   /**
-   * 修改策略名称
+   * 策略代码发生变化
    *
    * @memberof Editor
    */
-  changeStrategyName = async event => {
-    const name = event.target.value;
-    const {
-      dispatch,
-      strategy: { currentStrategyDetail },
-    } = this.props;
-    _.set(currentStrategyDetail, 'name', name);
+  onCodeChange = async code => {
+    this.changeCurrentDetailAndUpdate('source_code.code_text', code);
+  };
 
-    await dispatch({
-      type: 'strategy/update',
-      payload: {
-        currentStrategyDetail,
-      },
-    });
-    this.updateDetail(currentStrategyDetail);
+  /**
+   * 策略名称发生变化
+   *
+   * @memberof Editor
+   */
+  onStrategyNameChange = async event => {
+    const name = event.target.value;
+    this.changeCurrentDetailAndUpdate('name', name);
   };
 
   /**
@@ -199,7 +198,7 @@ class Editor extends PureComponent {
       </Fragment>
     );
     const editorTitle = (
-      <Input onChange={this.changeStrategyName} value={currentStrategyDetail.name} />
+      <Input onChange={this.onStrategyNameChange} value={currentStrategyDetail.name} />
     );
 
     return (

@@ -1,15 +1,11 @@
-import jwt
-from django.shortcuts import render
 from datetime import datetime
 from rest_framework.views import APIView
 from rest_framework.generics import (
     ListAPIView,
     RetrieveUpdateDestroyAPIView,
     CreateAPIView,
-    GenericAPIView,
 )
 from rest_framework.response import Response
-from django.contrib.auth.models import User
 from .models import SourceCode, Backtest, Strategy
 from .serializers import (
     SourceCodeSerializer,
@@ -76,6 +72,14 @@ class StrategyUpdateAPIView(RetrieveUpdateDestroyAPIView):
 
     queryset = Strategy.objects.all()
     serializer_class = StrategyDetailSerializer
+    lookup_field = "id"
+
+
+class BacktestUpdateAPIView(RetrieveUpdateDestroyAPIView):
+    """查询，修改，删除Backtest详情"""
+
+    queryset = Backtest.objects.all()
+    serializer_class = BacktestSerializer
     lookup_field = "id"
 
 

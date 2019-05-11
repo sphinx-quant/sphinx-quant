@@ -27,6 +27,7 @@ urlpatterns = [
     url(r"^strategy/detail/(?P<id>\S+)", views.StrategyUpdateAPIView.as_view()),
     url(r"^strategy/list", views.StrategyListView.as_view()),
     url(r"^strategy/create", views.StrategyCreateAPIView.as_view()),
+    url(r"^backtest/detail/(?P<id>\S+)", views.BacktestUpdateAPIView.as_view()),
     url(r"^backtest/list", views.BacktestListView.as_view()),
     url(r"^backtest/test/(?P<id>\S+)", views.BacktestView.as_view()),
     url(r"^currentUser", views.CurrentUserAPIView.as_view()),

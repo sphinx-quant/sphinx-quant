@@ -1,14 +1,15 @@
 # Sphinx Quant
 
 ## 开发进度
-- [x] Circle Ci自动化
+
+- [x] Circle Ci 自动化
 - [x] 官方网站
-- [X] 策略回测模块
+- [x] 策略回测模块
 - [ ] 交易管理模块
 - [ ] 账户管理模块
 - [ ] 网关管理模块
 - [ ] 风险管理模块
-- [ ] 分布式Worker
+- [ ] 分布式 Worker
 - [ ] 数据统计模块
 - [ ] 官方教程
 
@@ -34,4 +35,4 @@
 
 ## License
 
-Icon made by [geotatah](https://www.flaticon.com/authors/geotatah) from www.flaticon.com 
+Icon made by [geotatah](https://www.flaticon.com/authors/geotatah) from www.flaticon.com

@@ -1,6 +1,6 @@
-# sphinx-quant(暂停开发和更新)
+# sphinx-quant
 
-## 开发进度
+## 开发进度(暂停开发和更新)
 
 - [x] Circle Ci 自动化
 - [x] 官方网站
